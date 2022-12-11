@@ -103,7 +103,7 @@ namespace MineSweeper_2022
                     int xx = temp[i] % W;
                     int yy = temp[i] / W;
                     var s = MineState.IsSafe0;
-                    if (i < temp.Length * 0.1)
+                    if (i < NMine)
                     {
                         s = MineState.IsMine;
                     }
