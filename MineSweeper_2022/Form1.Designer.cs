@@ -53,18 +53,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("BIZ UDゴシック", 12F);
             this.label1.Location = new System.Drawing.Point(100, 140);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 24);
+            this.label1.Size = new System.Drawing.Size(110, 32);
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(380, 140);
+            this.label2.Font = new System.Drawing.Font("BIZ UDゴシック", 12F);
+            this.label2.Location = new System.Drawing.Point(450, 140);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 24);
+            this.label2.Size = new System.Drawing.Size(110, 32);
             this.label2.TabIndex = 2;
             this.label2.Text = "label2";
             // 
@@ -116,7 +118,7 @@
             // 
             this.button5.Location = new System.Drawing.Point(30, 450);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(130, 50);
+            this.button5.Size = new System.Drawing.Size(140, 50);
             this.button5.TabIndex = 7;
             this.button5.Text = "オープン";
             this.button5.UseVisualStyleBackColor = true;
@@ -124,9 +126,9 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(240, 450);
+            this.button6.Location = new System.Drawing.Point(230, 450);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(130, 50);
+            this.button6.Size = new System.Drawing.Size(140, 50);
             this.button6.TabIndex = 8;
             this.button6.Text = "フラグ";
             this.button6.UseVisualStyleBackColor = true;
@@ -140,6 +142,7 @@
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Font = new System.Drawing.Font("BIZ UDゴシック", 9F);
             this.groupBox1.Location = new System.Drawing.Point(1900, 200);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(400, 550);

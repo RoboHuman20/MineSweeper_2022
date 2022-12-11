@@ -186,7 +186,10 @@ namespace MineSweeper_2022
             Brush white = new SolidBrush(Color.FromArgb(255, 255, 255));
             Pen normalFrame = new Pen(white, 1);                                // 普通のマス用
             Pen cursorFrame = new Pen(green, 4);                                // カーソル用
-            Font font = new Font("MS ゴシック", 12);                            // フォント設定
+            Font font = new Font("BIZ UDゴシック", 12);                         // フォント設定
+            StringFormat format = new StringFormat();
+            format.Alignment = StringAlignment.Center;                          // X軸中央ぞろえ 
+            format.LineAlignment = StringAlignment.Center;                      // Y軸中央ぞろえ
 
             for (int j = 0; j < H; j++)
             {
@@ -204,10 +207,10 @@ namespace MineSweeper_2022
                         switch (BoardMine[i, j])
                         {
                             case MineState.IsMine:                              // 地雷なら赤字でM
-                                g.DrawString("M", font, red, rect);
+                                g.DrawString("M", font, red, rect, format);
                                 break;
                             default:                                            // 安全マスなら白字で地雷の個数
-                                g.DrawString(around.ToString(), font, white, rect);
+                                g.DrawString(around.ToString(), font, white, rect, format);
                                 break;
 
                         }
