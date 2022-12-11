@@ -63,6 +63,7 @@ namespace MineSweeper_2022
         int LeftOpen = NCell - NMine;                   // 残り安全マス数
         int CursorX = 0;                                // カーソルx座標
         int CursorY = 0;                                // カーソル座標
+        string Messsage = "";
 
         MineState CountMine(int X, int Y)                                       // 周辺地雷カウント
         {
@@ -146,6 +147,7 @@ namespace MineSweeper_2022
                     BoardOpen[X, Y] = OpenState.Opened;         // オープンして
                     LeftMine--;                                 // 地雷数を1減らして
                     IsFinished = true;                          // 終了フラグをたてる
+                    Messsage = "残念!";                         // メッセージ
                     break;
                 default:
                     BoardOpen[X, Y] = OpenState.Opened;         // それ以外なら1マスだけオープン
@@ -153,7 +155,11 @@ namespace MineSweeper_2022
                     break;
 
             }
-            if (LeftOpen == 0) IsFinished = true;               // 全部オープンしたら終了フラグ
+            if (LeftOpen == 0)
+            {
+                IsFinished = true;               // 全部オープンしたら終了フラグ
+                Messsage = "クリア!!";           // メッセージ
+            }
         }
 
         void FlagCell(int X, int Y)                         // 旗をたてる
@@ -225,6 +231,7 @@ namespace MineSweeper_2022
                     }
                     label1.Text = "残り安全マス: " + LeftOpen.ToString();
                     label2.Text = "残り地雷マス: " + LeftMine.ToString();
+                    label3.Text = Messsage;
                 }
             }
 
