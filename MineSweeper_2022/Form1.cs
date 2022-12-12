@@ -87,6 +87,12 @@ namespace MineSweeper_2022
         void InitializeBoard()
         {
             var rnd = new Random();
+            Messsage = "";  // メッセージ初期化
+            IsFinished = false;                        // 終了しているかの初期化
+            LeftMine = NMine;                           // 残り地雷数初期化
+            LeftOpen = NCell - NMine;                   // 残り安全マス数初期化
+            CursorX = 0;                                // カーソルx座標初期化
+            CursorY = 0;                                // カーソル座標初期化
 
             //初期配置生成
             {
