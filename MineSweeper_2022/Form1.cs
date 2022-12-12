@@ -63,7 +63,8 @@ namespace MineSweeper_2022
         int LeftOpen = NCell - NMine;                   // 残り安全マス数
         int CursorX = 0;                                // カーソルx座標
         int CursorY = 0;                                // カーソル座標
-        string Messsage = "";
+        string Messsage = "";                           // メッセージ
+        Random rnd = new Random();                      // 乱数
 
         MineState CountMine(int X, int Y)                                       // 周辺地雷カウント
         {
@@ -86,7 +87,6 @@ namespace MineSweeper_2022
 
         void InitializeBoard()
         {
-            var rnd = new Random();
             Messsage = "";  // メッセージ初期化
             IsFinished = false;                        // 終了しているかの初期化
             LeftMine = NMine;                           // 残り地雷数初期化
@@ -96,28 +96,35 @@ namespace MineSweeper_2022
 
             //初期配置生成
             {
-                var temp = new int[H * W];
+                var temp = new int[H * W];              // 一次元配列化
                 for (int i = 0; i < temp.Length; i++)
                     temp[i] = i;
                 for (int i = temp.Length; --i > 0;)
                 {
-                    var j = rnd.Next(i + 1);
+                    var j = rnd.Next(i + 1);            // 乱数で入れ替え
                     (temp[i], temp[j]) = (temp[j], temp[i]);
                 }
 
+
                 for (int i = 0; i < temp.Length; i++)
                 {
-                    int xx = temp[i] % W;
-                    int yy = temp[i] / W;
-                    var s = MineState.IsSafe0;
-                    if (i < NMine)
+                    int xx = temp[i] % W;               // 割った余りがx座標
+                    int yy = temp[i] / W;               // 商がy座標
+                    var s = MineState.IsSafe0;          // すべて周辺地雷0に
+                    if (i < NMine)                      // 一次元配列のインデックスが0からNMineまでなら地雷に
                     {
                         s = MineState.IsMine;
                     }
+                    BoardOpen[xx, yy] = OpenState.UnopenNone;     // 未オープン旗ナシにする
                     BoardMine[xx, yy] = s;
-                    Console.WriteLine(s.ToString());
-                    BoardMine[xx, yy] = CountMine(xx,yy);
-                    BoardOpen[xx, yy] = OpenState.UnopenNone;
+                }
+
+                for (int j = 0; j < H; j++)
+                {
+                    for (int i = 0; i < W; i++)
+                    {
+                        BoardMine[i, j] = CountMine(i, j);   // 周辺地雷数取得
+                    }
                 }
             }
         }
@@ -307,6 +314,13 @@ namespace MineSweeper_2022
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)  // リトライボタンの操作
+        {
+            if (!IsFinished) return;                            // 誤クリック対策のため、終了していないときは何もしない
+            InitializeBoard();                                  // 初期化
+            drawProcess();                                      // 描画し直し
         }
     }
 }

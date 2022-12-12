@@ -39,6 +39,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -162,11 +163,23 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "label3";
             // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("BIZ UDゴシック", 9F);
+            this.button7.Location = new System.Drawing.Point(2130, 80);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(170, 50);
+            this.button7.TabIndex = 11;
+            this.button7.Text = "リトライ";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2374, 1529);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
@@ -195,6 +208,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button7;
     }
 }
 
