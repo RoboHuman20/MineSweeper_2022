@@ -63,6 +63,7 @@ namespace MineSweeper_2022
         int LeftOpen = NCell - NMine;                   // 残り安全マス数
         int CursorX = 0;                                // カーソルx座標
         int CursorY = 0;                                // カーソル座標
+        int NOpen = 0;                                  // 操作回数
         string Messsage = "";                           // メッセージ
         Random rnd = new Random();                      // 乱数
 
@@ -87,12 +88,13 @@ namespace MineSweeper_2022
 
         void InitializeBoard()
         {
-            Messsage = "";  // メッセージ初期化
-            IsFinished = false;                        // 終了しているかの初期化
+            Messsage = "";                              // メッセージ初期化
+            IsFinished = false;                         // 終了しているかの初期化
             LeftMine = NMine;                           // 残り地雷数初期化
             LeftOpen = NCell - NMine;                   // 残り安全マス数初期化
             CursorX = 0;                                // カーソルx座標初期化
             CursorY = 0;                                // カーソル座標初期化
+            NOpen = 0;                    　             // 操作回数初期化
 
             //初期配置生成
             {
@@ -157,6 +159,12 @@ namespace MineSweeper_2022
                     }
                     break;
                 case MineState.IsMine:                          // 地雷をオープンしたら
+                    if(NOpen == 0)
+                    {
+                        SwapMine(X, Y);
+                        OpenCell(X, Y);
+                        break;
+                    }
                     BoardOpen[X, Y] = OpenState.Opened;         // オープンして
                     LeftMine--;                                 // 地雷数を1減らして
                     IsFinished = true;                          // 終了フラグをたてる
@@ -173,6 +181,7 @@ namespace MineSweeper_2022
                 IsFinished = true;               // 全部オープンしたら終了フラグ
                 Messsage = "クリア!!";           // メッセージ
             }
+            NOpen++;
         }
 
         void FlagCell(int X, int Y)                         // 旗をたてる
@@ -253,6 +262,36 @@ namespace MineSweeper_2022
 
             //pictureBoxの中身を塗り替える
             pictureBox1.Refresh();
+        }
+
+        private void SwapMine(int x, int y)             // 地雷と安全マスをいれかえる
+        {
+            bool in_roop_over = false;                  // 二重ループ終了用
+            for (int j = y; j < H; j++)
+            {
+                for(int i = x; i < W; i++)
+                {
+                    if (BoardMine[i,j] != MineState.IsMine)
+                    {
+                        BoardMine[i, j] = MineState.IsMine;
+                        BoardMine[x, y] = MineState.IsSafe0;
+                        in_roop_over = true;
+                        break;
+                    }
+                }
+                if (in_roop_over == true)               // 内側ループが正常終了したら外側も終了
+                {
+                    break;
+                }
+            }
+
+            for (int j = 0; j < H; j++)
+            {
+                for (int i = 0; i < W; i++)
+                {
+                    BoardMine[i, j] = CountMine(i, j);   // 周辺地雷数取得しなおし
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)  //↑ボタンの操作
