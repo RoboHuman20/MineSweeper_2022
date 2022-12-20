@@ -141,6 +141,8 @@ namespace MineSweeper_2022
             switch (BoardMine[X, Y])
             {
                 case MineState.IsSafe0:                         // 周りに地雷が0なら周りを全部オープン
+                    BoardOpen[X, Y] = OpenState.Opened;         // オープンして
+                    LeftOpen--;                                 // 地雷数を1減らして
                     for (int j = Y - 1; j <= Y + 1; j++)
                     {
                         if (j == -1) continue;                  // 端対策
@@ -151,8 +153,7 @@ namespace MineSweeper_2022
                             if (i == W) continue;
                             if (BoardOpen[i, j] == OpenState.UnopenNone)    // 周りのマスが旗アリなどの場合はスキップ
                             {
-                                BoardOpen[i, j] = OpenState.Opened;
-                                LeftOpen--;
+                                OpenCell(i, j);
                             }
 
                         }
