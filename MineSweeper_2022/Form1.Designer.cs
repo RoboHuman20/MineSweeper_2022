@@ -167,6 +167,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("BIZ UDゴシック", 15F);
             this.label3.Location = new System.Drawing.Point(923, 400);
@@ -178,6 +179,7 @@
             // 
             // button7
             // 
+            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button7.Font = new System.Drawing.Font("BIZ UDゴシック", 9F);
             this.button7.Location = new System.Drawing.Point(983, 40);
             this.button7.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);

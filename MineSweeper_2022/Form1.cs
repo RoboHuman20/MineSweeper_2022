@@ -13,8 +13,8 @@ namespace MineSweeper_2022
     public partial class Form1 : Form
     {
         Bitmap bmp;
-        const int W = 37;               // 縦のマス
-        const int H = 19;               // 横のマス
+        const int W = 37;               // 横のマス
+        const int H = 19;               // 縦のマス
         public Form1()
         {
             InitializeComponent();
