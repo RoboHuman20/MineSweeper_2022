@@ -331,21 +331,21 @@ namespace MineSweeper_2022
             return;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)  // オープンボタンの操作
         {
             if (IsFinished == true) return;                     // 終了済ならreturn
             OpenCell(CursorX,CursorY);                          // オープン
             drawProcess();                                      // 描画し直し
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)  // フラグボタンの操作
         {
             if (IsFinished == true) return;                     // 終了済ならreturn
             FlagCell(CursorX, CursorY);                         // フラグ
             drawProcess();                                      // 描画し直し
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)     // ビルドしたときの操作
         {
             InitializeBoard();                                  // 初期化
             drawProcess();                                      // 描画し直し
