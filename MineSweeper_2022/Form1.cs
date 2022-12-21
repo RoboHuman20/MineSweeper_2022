@@ -247,19 +247,13 @@ namespace MineSweeper_2022
                     {
                         g.DrawString("F", font, red, rect, format); 
                     }
-
-                    if (i == CursorX && j == CursorY){                          // カーソルがあるところは緑で縁取り
-                        g.DrawRectangle(cursorFrame, i * dx, j * dy, dx, dy);
-                    }
-                    else
-                    {
-                        g.DrawRectangle(normalFrame, i * dx, j * dy, dx, dy);   // カーソルのないところは黒で縁取り
-                    }
+                    g.DrawRectangle(normalFrame, i * dx, j * dy, dx, dy);   // 黒で縁取り
                     label1.Text = "残り安全マス: " + LeftOpen.ToString();
                     label2.Text = "残り地雷マス: " + LeftMine.ToString();
                     label3.Text = Messsage;
                 }
             }
+            g.DrawRectangle(cursorFrame, CursorX * dx, CursorY * dy, dx, dy);   // カーソルがあるところは緑で縁取り
 
             //pictureBoxの中身を塗り替える
             pictureBox1.Refresh();
@@ -358,7 +352,7 @@ namespace MineSweeper_2022
 
         private void button7_Click(object sender, EventArgs e)  // リトライボタンの操作
         {
-            if (!IsFinished) return;                            // 誤クリック対策のため、終了していないときは何もしない
+            //if (!IsFinished) return;                            // 誤クリック対策のため、終了していないときは何もしない
             InitializeBoard();                                  // 初期化
             drawProcess();                                      // 描画し直し
         }
