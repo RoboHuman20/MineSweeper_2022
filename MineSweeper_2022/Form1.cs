@@ -213,8 +213,10 @@ namespace MineSweeper_2022
             Brush green = new SolidBrush(Color.FromArgb(103, 224, 77));
             Brush red = new SolidBrush(Color.FromArgb(222, 64, 164));
             Brush white = new SolidBrush(Color.FromArgb(255, 255, 255));
+            Brush blue = new SolidBrush(Color.FromArgb(41, 173, 239));
+            Brush purple = new SolidBrush(Color.FromArgb(141, 69, 230));
             Pen normalFrame = new Pen(black, 1);                                // 普通のマス用
-            Pen cursorFrame = new Pen(green, 4);                                // カーソル用
+            Pen cursorFrame = new Pen(blue, 4);                                // カーソル用
             Font font = new Font("BIZ UDゴシック", 12);                         // フォント設定
             StringFormat format = new StringFormat();
             format.Alignment = StringAlignment.Center;                          // X軸中央ぞろえ 
@@ -227,7 +229,7 @@ namespace MineSweeper_2022
                     RectangleF rect = new RectangleF(i * dx, j * dy, dx, dy);   // FillRectangleと文字描画のときの範囲指定
 
                     if (BoardOpen[i, j] == OpenState.Opened && BoardMine[i, j] == MineState.IsMine) 
-                        g.FillRectangle(red, rect);                             // オープンされた地雷の場合赤で描画
+                        g.FillRectangle(purple, rect);                             // オープンされた地雷の場合紫で描画
                     else g.FillRectangle(white, rect);                          // それ以外を白で描画
 
                     int around = (int)BoardMine[i, j];                          // 周辺の地雷の個数
@@ -238,14 +240,14 @@ namespace MineSweeper_2022
                             case MineState.IsMine:                              // 地雷なら文字なし
                                 break;
                             default:                                            // 安全マスなら黒字で地雷の個数
-                                g.DrawString(around.ToString(), font, black, rect, format);
+                                g.DrawString(around.ToString(), font, blue, rect, format);
                                 break;
 
                         }
                     }
-                    if (BoardOpen[i, j] == OpenState.UnopenFlag)                // フラグありなら赤字でF
+                    if (BoardOpen[i, j] == OpenState.UnopenFlag)                // フラグありなら紫でF
                     {
-                        g.DrawString("F", font, red, rect, format); 
+                        g.DrawString("F", font, purple, rect, format); 
                     }
                     g.DrawRectangle(normalFrame, i * dx, j * dy, dx, dy);   // 黒で縁取り
                     label1.Text = "残り安全マス: " + LeftOpen.ToString();
