@@ -356,5 +356,14 @@ namespace MineSweeper_2022
             InitializeBoard();                                  // 初期化
             drawProcess();                                      // 描画し直し
         }
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)    // クリックでカーソル操作用
+        {
+            int dx = pictureBox1.Width / W;                                     // マスのサイズ
+            int dy = pictureBox1.Height / H;
+            CursorX = e.X / dx;                                                 // カーソル位置変更
+            CursorY = e.Y / dy;
+            drawProcess();                                                      // 描画しなおし
+        }
     }
 }
