@@ -359,12 +359,22 @@ namespace MineSweeper_2022
             drawProcess();                                      // 描画し直し
         }
 
-        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)    // クリックでカーソル操作用
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)    // クリックでオープン・フラグ
         {
+            if (IsFinished == true) return;                                     // 終了していればそれ以上操作できない
             int dx = pictureBox1.Width / W;                                     // マスのサイズ
             int dy = pictureBox1.Height / H;
             CursorX = e.X / dx;                                                 // カーソル位置変更
             CursorY = e.Y / dy;
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    OpenCell(CursorX, CursorY);                                 // 左クリックでオープン
+                    break;
+                case MouseButtons.Right:
+                    FlagCell(CursorX, CursorY);                                 // 右クリックでフラグ
+                    break;
+            }
             drawProcess();                                                      // 描画しなおし
         }
     }
