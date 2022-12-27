@@ -209,7 +209,7 @@ namespace MineSweeper_2022
             int dy = pictureBox1.Height / H;
 
             Graphics g = Graphics.FromImage(bmp);
-            Brush black = new SolidBrush(Color.FromArgb(127, 127, 127));
+            Brush black = new SolidBrush(Color.FromArgb(0, 0, 0));
             Brush green = new SolidBrush(Color.FromArgb(103, 224, 77));
             Brush red = new SolidBrush(Color.FromArgb(222, 64, 164));
             Brush white = new SolidBrush(Color.FromArgb(255, 255, 255));
