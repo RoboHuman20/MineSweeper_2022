@@ -209,11 +209,12 @@ namespace MineSweeper_2022
             int dy = pictureBox1.Height / H;
 
             Graphics g = Graphics.FromImage(bmp);
-            Brush black = new SolidBrush(Color.FromArgb(127, 127, 127));
+            Brush gray = new SolidBrush(Color.FromArgb(127, 127, 127));
+            Brush black = new SolidBrush(Color.FromArgb(0, 0, 0));
             Brush green = new SolidBrush(Color.FromArgb(103, 224, 77));
             Brush red = new SolidBrush(Color.FromArgb(222, 64, 164));
             Brush white = new SolidBrush(Color.FromArgb(255, 255, 255));
-            Pen normalFrame = new Pen(black, 1);                                // 普通のマス用
+            Pen normalFrame = new Pen(gray, 1);                                // 普通のマス用
             Pen cursorFrame = new Pen(green, 4);                                // カーソル用
             Font font = new Font("BIZ UDゴシック", 12);                         // フォント設定
             StringFormat format = new StringFormat();
@@ -247,7 +248,7 @@ namespace MineSweeper_2022
                     {
                         g.DrawString("F", font, red, rect, format); 
                     }
-                    g.DrawRectangle(normalFrame, i * dx, j * dy, dx, dy);   // 黒で縁取り
+                    g.DrawRectangle(normalFrame, i * dx, j * dy, dx, dy);   // グレーで縁取り
                     label1.Text = "残り安全マス: " + LeftOpen.ToString();
                     label2.Text = "残り地雷マス: " + LeftMine.ToString();
                     label3.Text = Messsage;
