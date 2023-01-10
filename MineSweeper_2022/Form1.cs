@@ -20,8 +20,8 @@ namespace MineSweeper_2022
             InitializeComponent();
             //Console.WriteLine(pictureBox1.Width);
             //Console.WriteLine(pictureBox1.Height);
-            pictureBox1.Width = W * 22;
-            pictureBox1.Height = H * 22;
+            pictureBox1.Width = W * 22 + 2;
+            pictureBox1.Height = H * 22 + 2;
             bmp = new Bitmap(this.pictureBox1.Width, this.pictureBox1.Height);
 
             //pictureBoxに，bmpをはりつける
